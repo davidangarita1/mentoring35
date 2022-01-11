@@ -6,9 +6,7 @@ const Result = (props) => {
   return (
     <div className='container'>
       <h2>Resultado:</h2>
-      <div className="form-control boxNum">
-        {props.result && props.result}
-      </div>
+      <textarea className='form-control boxNum' rows='10' value={props.result} readOnly></textarea>
     </div>
   )
 }
