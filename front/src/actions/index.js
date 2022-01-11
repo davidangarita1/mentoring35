@@ -1,5 +1,3 @@
-
-
 export const fetchRandom = (state) => (dispatch) => {
 
     dispatch({ type: "view-loading" });

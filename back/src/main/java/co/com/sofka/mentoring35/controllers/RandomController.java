@@ -22,7 +22,7 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
-@RequestMapping(value = "/r")
+@RequestMapping(value = "/ramdom")
 public class RandomController {
 
     private final RandomRepository randomRepository;
