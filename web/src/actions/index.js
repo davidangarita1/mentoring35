@@ -1,4 +1,4 @@
-const API_URL = "https://ramdom-numbers-app.herokuapp.com/";
+const API_URL = "https://ramdom-numbers-app.herokuapp.com";
 
 export const fetchRandom = (state) => (dispatch) => {
     dispatch({ type: "view-loading" });
