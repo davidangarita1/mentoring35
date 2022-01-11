@@ -7,14 +7,13 @@
 
 .boxNum {
 	width: 80%;
-	height: 300px;
+	height: 200px;
 	border: 1px solid #000;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	font-size: 30px;
+	font-size: 25px;
 	color: #000;
 	background-color: #fff;
-	cursor: pointer;
 	overflow: auto;
 }
