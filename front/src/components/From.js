@@ -4,19 +4,31 @@ import { fetchRandom } from '../actions';
 
 const From = (props) => {// component stateless
   const [state, setState] = useState();
+
   const onSubmit = (e) => {
     e.preventDefault();
+
     props.dispatch(fetchRandom(state));
   };
+
   return <div>
     <form onSubmit={onSubmit}>
-      <label htmlFor="list">Ingrese una lista separada por comas:</label>
+      <div className="input-group mt-3">
+        <label className="form-label mb-3" htmlFor="list"></label>
+        <textarea
+          className="form-control"
+          id="list"
+          style={{ width: "300px", height: "120px" }}
+          onChange={(e) => setState(e.target.value)}
+          placeholder='Ingrese los numeros separados por coma:'
+        ></textarea>
+      </div>
+
       <br />
-      <textarea id="list" style={{ width: "300px", height: "120px" }} 
-        onChange={(e) => setState(e.target.value)}
-      ></textarea>
-      <br />
-      <button type="submit" disabled={props.loading}>
+      <button
+        className="btn btn-success"
+        type="submit"
+        disabled={props.loading}>
         Enviar
       </button>
     </form>

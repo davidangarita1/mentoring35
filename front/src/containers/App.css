@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+* {
+	box-sizing: border-box;
+	font-family: 'Lato', sans-serif;
+}
+
+.boxNum {
+	width: 80%;
+	height: 100px;
+	border: 1px solid #000;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 50px;
+	color: #000;
+	background-color: #fff;
+	cursor: pointer;
+	overflow: auto;
+}

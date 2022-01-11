@@ -1,13 +1,14 @@
-export const fetchRandom = (state) => (dispatch) => {
+const API_URL = "http://localhost:8080";
 
+export const fetchRandom = (state) => (dispatch) => {
     dispatch({ type: "view-loading" });
 
-    return fetch(`http://localhost:8080/r`, {
-        method: 'POST', // *GET, POST, PUT, DELETE, etc.
+    return fetch(`${API_URL}/random`, {
+        method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({list: state}) // body data type must match "Content-Type" header
+        body: JSON.stringify({list: state})
     }).then(response => response.json())
       .then(json => {
           dispatch({ type: "random-result", data: json });
@@ -15,5 +16,18 @@ export const fetchRandom = (state) => (dispatch) => {
         })
 }
 
-
-//TODO: agregar las demas acciones
+export const fetchRandomNumbers = (state) => (dispatch) => {
+    dispatch({ type: "view-loading" });
+    
+    return fetch(`${API_URL}/random/number`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({number1: state.num1, number2: state.num2})
+    }).then(response => response.json())
+      .then(json => {
+          dispatch({ type: "random-result", data: json });
+          dispatch({ type: "view-loaded" });
+        })
+}

@@ -21,8 +21,8 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
-@RequestMapping(value = "/ramdom")
+@CrossOrigin(origins = "*")
+@RequestMapping(value = "/random")
 public class RandomController {
 
     private final RandomRepository randomRepository;
@@ -30,6 +30,11 @@ public class RandomController {
     @Autowired
     public RandomController(RandomRepository randomRepository) {
         this.randomRepository = randomRepository;
+    }
+
+    @GetMapping("")
+    public Flux<Random> get() {
+        return randomRepository.findAll();
     }
 
     @PostMapping("")
@@ -40,10 +45,10 @@ public class RandomController {
             return entity;
         }).map(entity -> {
             var list = Stream.of(request.getList().split(","))
-                .map(String::trim)
+                .map(p -> p.trim())
                 .collect(Collectors.toList());
             Collections.shuffle(list);
-            var randomList = String.join(",", list);
+            var randomList = list.stream().collect(Collectors.joining(","));
             entity.setRandomList(randomList);
             return entity;
         }).flatMap(randomRepository::save);
@@ -61,14 +66,11 @@ public class RandomController {
             var list = Stream.of(entity.getOrginalList().split(","))
                     .collect(Collectors.toList());
             Collections.shuffle(list);
-            var randomList = String.join(",", list);
+            var randomList = list.stream().collect(Collectors.joining(","));
             entity.setRandomList(randomList);
             return entity;
         }).flatMap(randomRepository::save);
     }
 
-    @GetMapping("")
-    public Flux<Random> get() {
-        return randomRepository.findAll();
-    }
+
 }
