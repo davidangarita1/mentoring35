@@ -47,6 +47,4 @@ public class Random {
     public void setRandomList(String randomList) {
         this.randomList = randomList;
     }
-
-    
 }

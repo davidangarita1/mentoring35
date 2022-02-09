@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import From from '../components/From'
 import Result from '../components/Result'
-import NumberResult from '../components/NumberResult'
 import NumbersForm from '../components/NumbersForm'
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
